@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Social Media</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<style>
+    .crticn {
+        font-size: 28px;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .image-section {
+        position: relative;
+    }
+
+    .large-image img {
+        width: 61%;
+        max-width: 500px;
+    }
+
+    .small-images {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        transform: translateX(15rem) translateY(-40rem);
+    }
+
+    .small-images img {
+        width: 150px;
+        height: 150px;
+        object-fit: contain;
+        margin-left: -15px;
+        border: none !important;
+    }
+
+    .small-images h1 {
+        font-size: 13px;
+        text-align: center;
+        font-weight: 600;
+    }
+
+    .frmclick {
+        display: block;
+        width: 100%;
+        max-width: 300px;
+        margin-top: 12px;
+        padding: 8px;
+        font-size: 17px;
+        font-weight: bold;
+        text-align: center;
+        border-radius: 30px;
+        text-decoration: none;
+        color: #000;
+        cursor: pointer;
+        border: 1px solid #6b004e;
+        box-shadow: inset 6px 0 #6b004e, inset -6px 0 #6b004e;
+    }
+
+    .frmclick:hover {
+        background-color: #fff;
+        color: #ff3d3d;
+    }
+
+    /* Popup Modal Styles */
+    .popup-modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(211 211 211);
+        justify-content: center;
+        align-items: center;
+    }
+
+    img#popup-image {
+        width: 100%;
+        margin-top: 2rem;
+        /*margin-left: -25px !important;*/
+    }
+
+    .popup-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .popup-image-full {
+        max-width: 100%;
+        max-height: 100%;
+        margin-bottom: 20px;
+    }
+
+    #popup-details {
+        color: #fff;
+        text-align: center;
+        max-width: 600px;
+    }
+
+    #popup-title {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    #popup-description {
+        font-size: 16px;
+    }
+
+    .close-popup {
+        position: absolute;
+    top: -22px;
+    right: 12px;
+    color: gray;
+    font-size: 36px;
+    font-weight: bold;
+    cursor: pointer;
+    }
+
+    .close-popup:hover,
+    .close-popup:focus {
+        color: #f1f1f1;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    div#popup-modal {
+        height: 13rem;
+        margin-top: 16rem;
+        margin-left: 10px;
+        width: 350px;
+    }
+
+    /* Share Button */
+    .share-btn {
+        background: none !important;
+        color: #fff;
+        padding: 8px !important;
+        border-radius: 10px;
+        font-size: 20px;
+        position: absolute;
+        bottom: 27rem !important;
+        right: 10rem;
+        cursor: pointer;
+    }
+
+    .shareicn {
+        margin-right: 10px;
+    }
+
+    .add-cart {
+        margin-bottom: 2rem;
+        margin-top: 5px;
+        margin-left: -7rem;
+    }
+
+    .add-cart a {
+        text-decoration: none;
+        background: #efefef;
+        padding: 10px 15px 10px 15px;
+        color: #000;
+        box-shadow: 0 2px 4px rgb(248 253 255);
+    }
+
+    #share-on-image {
+        display: none;
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    div#share-popup-modal {
+        height: 25rem;
+        margin-top: 15rem;
+        margin-left: 10px;
+        width: 350px;
+    }
+
+    img#share-popup-image {
+        max-width: 70%;
+        max-height: 70%;
+        margin-bottom: 0px;
+    }
+</style>
+
+<body>
+    <div class="">
+        <img src="img1/SS3.jpg" alt="Large Image" style="width: 23rem;">
+    </div>
+
+    <section class="image-section">
+        <!-- Large Image -->
+        <div class="large-image">
+            <img src="N-5.7 style\SS6.jpg" alt="Large Image">
+        </div>
+
+        <!-- Small Images -->
+
+    </section>
+    <div class="small-images">
+        <h1>Shop the Look</h1>
+         <div class="product" data-title="Product 1" data-description="This is the description of Product 1.">
+            <img src="N-5.7 style\Image1.jpg" alt="Small Image 1" class="popup-image"
+                onclick="showImage('img-1/Image1s.jpg')">
+        </div>
+        <div class="product" data-title="Product 2" data-description="This is the description of Product 2.">
+            <img src="N-5.7 style\Image2.jpg" alt="Small Image 2" class="popup-image"
+                onclick="showImage('img-1/Image2s.jpg')">
+        </div>
+        <div class="product" data-title="Product 3" data-description="This is the description of Product 3.">
+            <img src="N-5.7 style\Image3.jpg" alt="Small Image 3" class="popup-image"
+                onclick="showImage('img-1/Image3s.jpg')">
+        </div>
+        <div class="product" data-title="Product 4" data-description="This is the description of Product 4.">
+            <img src="N-5.7 style\Image4.jpg" alt="Small Image 4" class="popup-image"
+                onclick="showImage('img-1/Image4s.jpg')">
+        </div>
+        <div class="add-cart">
+            <a href="">Add to Cart</a>
+        </div>
+    </div>
+
+    <!-- The Popup Modal for Image -->
+    <div id="popup-modal" class="popup-modal">
+        <span id="close-popup" class="close-popup">&times;</span>
+        <div class="popup-content">
+            <img id="popup-image" class="popup-image-full" src="" alt="Full Size Image">
+            <div id="popup-details">
+                <h2 id="popup-title"></h2>
+                <p id="popup-description"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Share Button -->
+    <div class="share-btn" onclick="showSharePopup()">
+        <i class="fas fa-share-alt"></i>
+    </div>
+    
+    <!-- The Share Image Popup Modal -->
+    <div id="share-popup-modal" class="popup-modal" style="display: none;">
+        <span id="close-share-popup" class="close-popup">&times;</span>
+        <div class="popup-content">
+            <img id="share-popup-image" class="popup-image-full" src="img/share pic.jpg" alt="Share Image" onclick="sharePage()">
+            <!-- Removed the button -->
+        </div>
+    </div>
+    <script>
+        // Function to show the image in the popup
+        function showImage(imageSrc) {
+            const popupModal = document.getElementById('popup-modal');
+            const popupImage = document.getElementById('popup-image');
+            popupImage.src = imageSrc; // Set the image source for the popup
+            popupModal.style.display = 'flex'; // Show the modal
+        }
+
+        // Close the image popup when the close button is clicked
+        document.getElementById('close-popup').addEventListener('click', function () {
+            document.getElementById('popup-modal').style.display = 'none';
+        });
+
+        // Function to show the share popup
+        function showSharePopup() {
+            const sharePopup = document.getElementById('share-popup-modal');
+            sharePopup.style.display = 'flex'; // Show the share popup
+        }
+
+        // Close the share popup when the close button is clicked
+        document.getElementById('close-share-popup').addEventListener('click', function () {
+            document.getElementById('share-popup-modal').style.display = 'none';
+        });
+
+        // Share functionality
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Check out this image!',
+                    text: 'Look at this amazing image!',
+                    url: window.location.href
+                }).catch((error) => console.log('Error sharing:', error));
+            } else {
+                alert('Your browser does not support the Share feature.');
+            }
+        }
+
+        // Close the popup when clicking outside the image
+        window.addEventListener('click', function (e) {
+            if (e.target === document.getElementById('popup-modal')) {
+                document.getElementById('popup-modal').style.display = 'none';
+            }
+            if (e.target === document.getElementById('share-popup-modal')) {
+                document.getElementById('share-popup-modal').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>
